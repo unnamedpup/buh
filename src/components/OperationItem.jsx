@@ -1,13 +1,11 @@
 import React from 'react';
 
 const OperationItem = ({ operation }) => {
-    const tds = [];
-    for (const key in operation) {
-            tds.push(<td>{operation[key]}</td>);
-    }
+    console.log('keys:', Object.keys(operation));
     return (
-        <tr key={operation.id} align="center">
-            {tds}
+        <tr align="center">
+          {Object.keys(operation).map((key) =>
+            <td key={key}>{operation[key]}</td>)}
         </tr>
     )
 };
