@@ -1,11 +1,8 @@
 import './styles/App.css';
-import ReactDOM from "react-dom";
-import {useEffect, useState} from "react";
-import OperationItem from "./components/OperationItem";
+import { useState } from "react";
 import React from "react";
 import OperationList from "./components/OperationList";
 import factories from "./factories"
-import OperationForm from "./components/OperationForm";
 import MyInput from "./components/UI/input/MyInput";
 import MyButton from "./components/UI/button/MyButton";
 
@@ -25,8 +22,8 @@ function App() {
 
     const addNewOperation = (e) => {
         e.preventDefault()
-        const newOperation = {
-            id: Date.now(),
+        const op = {
+            id: null,
             date: Date.now(),
             check,
             type,
@@ -34,8 +31,12 @@ function App() {
             desc,
             sum
         }
-        console.log(check)
-        setOperations([...operations, newOperation])
+
+        service.createOperation(op)
+            .then((newOperation) => {
+                console.log(check)
+                setOperations([...operations, newOperation])
+            });
     }
 
     return (
