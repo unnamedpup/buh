@@ -1,7 +1,7 @@
 import React from 'react';
 
 const OperationItem = ({ operation }) => {
-    console.log('keys:', Object.keys(operation));
+    //console.log('keys:', Object.keys(operation));
     return (
         <tr align="center">
           {Object.keys(operation).map((key) =>

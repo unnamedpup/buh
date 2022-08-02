@@ -9,6 +9,7 @@ import MyButton from "./components/UI/button/MyButton";
 function App() {
     const [operations, setOperations] = useState([])
     const [service, _] = useState(factories.getOperationService());
+    const [operation, setOperation] = useState({id: null, date: null, check: '', type: '', category: '', desc: '', sum: ''})
 
     useEffect(() => {
         service.getOperations()
@@ -17,27 +18,11 @@ function App() {
     }, [service]);
 
 
-    const [check, setCheck] = useState('');
-    const [type, setType] = useState('');
-    const [category, setCategory] = useState('');
-    const [desc, setDesc] = useState('');
-    const [sum, setSum] = useState(0);
-
     const addNewOperation = (e) => {
+        console.log(operation)
         e.preventDefault()
-        const op = {
-            id: null,
-            date: Date.now(),
-            check,
-            type,
-            category,
-            desc,
-            sum
-        }
-
-        service.createOperation(op)
+        service.createOperation(operation)
             .then((newOperation) => {
-                console.log(check)
                 setOperations([...operations, newOperation])
             });
     }
@@ -46,37 +31,37 @@ function App() {
         <div className="App">
             <form>
                 <MyInput
-                    value={check}
-                    onChange={e => setCheck(e.target.value)}
+                    value={operation.check}
+                    onChange={e => setOperation({...operation, check: e.target.value})}
                     type="text"
                     placeholder="Расчетный счет"
                 />
                 <MyInput
-                    value={type}
-                    onChange={e => setType(e.target.value)}
+                    value={operation.type}
+                    onChange={e => setOperation({...operation, type: e.target.value})}
                     type="text"
                     placeholder="Тип операции"
                 />
                 <MyInput
-                    value={category}
-                    onChange={e => setCategory(e.target.value)}
+                    value={operation.category}
+                    onChange={e => setOperation({...operation, category: e.target.value})}
                     type="text"
                     placeholder="Категория"
                 />
                 <MyInput
-                    value={desc}
-                    onChange={e => setDesc(e.target.value)}
+                    value={operation.desc}
+                    onChange={e => setOperation({...operation, desc: e.target.value})}
                     type="text"
                     placeholder="Примечание"
                 />
                 <MyInput
-                    value={sum}
-                    onChange={e => setSum(e.target.value)}
+                    value={operation.sum}
+                    onChange={e => setOperation({...operation, sum: e.target.value})}
                     placeholder="Сумма"
                 />
                 <MyButton onClick={addNewOperation}>Внести операцию</MyButton>
             </form>
-            <OperationList operations={operations}/>
+            <OperationList operations={operations} title={"Архив операций"}/>
         </div>
     );
 }

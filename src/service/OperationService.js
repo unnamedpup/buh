@@ -9,11 +9,12 @@ export class AxiosOperationService {
     }
 
     async createOperation (operation) {
-      console.log('operation:', operation);
-      operation.id = this.cache.length + 1;
-      console.log('operation:', operation);
-      this.cache.push(operation);
-      return operation;
+        console.log('operation:', operation);
+        operation.id = this.cache.length + 1;
+        operation.date = Date.now();
+        console.log('operation:', operation);
+        this.cache.push(operation);
+        return operation;
     }
 
     async getOperations (limit= 10, pageNumber = 1) {

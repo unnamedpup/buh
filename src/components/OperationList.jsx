@@ -1,11 +1,14 @@
 import React from 'react';
 import OperationItem from "./OperationItem";
 
-const OperationList = ({operations}) => {
+const OperationList = ({operations, title}) => {
     const titles = ["ID", "Дата", "Расчетный счет", "Тип", "Категория", "Примечание", "Сумма"]
 
     return (
-        <div align="center" title={"Архив операций"}>
+        <div align="center">
+            <h1 style={{textAlign: "center"}}>
+                {title}
+            </h1>
             <table>
                 <tr>
                     {titles.map((title) => <th key={title}>{title}</th>)}
