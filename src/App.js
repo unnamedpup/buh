@@ -1,21 +1,21 @@
 import './styles/App.css';
-import ReactDOM from "react-dom";
-import {useEffect, useState} from "react";
-import OperationItem from "./components/OperationItem";
+import { useEffect, useState } from "react";
 import React from "react";
 import OperationList from "./components/OperationList";
 import factories from "./factories"
-import OperationForm from "./components/OperationForm";
 import MyInput from "./components/UI/input/MyInput";
 import MyButton from "./components/UI/button/MyButton";
 
 function App() {
-    const service = factories.getOperationService();
-    const [operations, setOperations] = useState([
-       {id: 1, date: '01.01.2022', check: 'Прораб', type: 'Расход', category: 'Питание', desc: 'try', sum: 100},
-       {id: 2, date: '01.01.2022', check: 'Прораб', type: 'Расход', category: 'Питание', desc: 'try', sum: 100},
-       {id: 3, date: '01.01.2022', check: 'Прораб', type: 'Расход', category: 'Питание', desc: 'try', sum: 100},
-    ])
+    const [operations, setOperations] = useState([])
+    const [service, _] = useState(factories.getOperationService());
+
+    useEffect(() => {
+        service.getOperations()
+            .then((ops) => setOperations(ops))
+            .catch((err) => console.error(err));
+    }, [service]);
+
 
     const [check, setCheck] = useState('');
     const [type, setType] = useState('');
@@ -25,8 +25,8 @@ function App() {
 
     const addNewOperation = (e) => {
         e.preventDefault()
-        const newOperation = {
-            id: Date.now(),
+        const op = {
+            id: null,
             date: Date.now(),
             check,
             type,
@@ -34,8 +34,12 @@ function App() {
             desc,
             sum
         }
-        console.log(check)
-        setOperations([...operations, newOperation])
+
+        service.createOperation(op)
+            .then((newOperation) => {
+                console.log(check)
+                setOperations([...operations, newOperation])
+            });
     }
 
     return (
@@ -68,7 +72,6 @@ function App() {
                 <MyInput
                     value={sum}
                     onChange={e => setSum(e.target.value)}
-                    type="text"
                     placeholder="Сумма"
                 />
                 <MyButton onClick={addNewOperation}>Внести операцию</MyButton>
