@@ -1,11 +1,11 @@
-<mxfile host="app.diagrams.net" modified="2022-08-02T22:37:32.694Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 Safari/537.36 Edg/103.0.1264.71" etag="gWUVds7eT8H-xKky_pVm" version="20.2.0" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-08-02T22:53:01.506Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/103.0.5060.134 Safari/537.36 Edg/103.0.1264.71" etag="RIIqIpgqBUbhD7TUNJlQ" version="20.2.0" type="github" pages="2">
   <diagram id="0zTr8NJ6fugIFkMb8NCp" name="Page-1">
-    <mxGraphModel dx="6183" dy="1314" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="4618" dy="575" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="CKd_9SMvibLWiLTXi5Ua-3" value="OperationService" style="swimlane;" parent="1" vertex="1">
-          <mxGeometry x="-760" y="160" width="350" height="190" as="geometry">
+          <mxGeometry x="-790" y="160" width="350" height="190" as="geometry">
             <mxRectangle x="-900" y="10" width="140" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -45,7 +45,7 @@
           <mxGeometry x="-3350" y="30" width="330" height="250" as="geometry" />
         </mxCell>
         <mxCell id="zcg6ZxX6Wk7aITUErAla-1" value="OperationMetaInformationService" style="swimlane;" vertex="1" parent="1">
-          <mxGeometry x="-360" y="160" width="350" height="70" as="geometry">
+          <mxGeometry x="-390" y="160" width="350" height="70" as="geometry">
             <mxRectangle x="-900" y="10" width="140" height="30" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
@@ -109,7 +109,7 @@
           <mxGeometry y="120" width="200" height="30" as="geometry" />
         </mxCell>
         <mxCell id="CKd_9SMvibLWiLTXi5Ua-42" value="RoleEnum" style="swimlane;" parent="zcg6ZxX6Wk7aITUErAla-28" vertex="1">
-          <mxGeometry y="130" width="200" height="190" as="geometry" />
+          <mxGeometry x="120" y="140" width="200" height="190" as="geometry" />
         </mxCell>
         <mxCell id="CKd_9SMvibLWiLTXi5Ua-45" value="+ Admin" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="CKd_9SMvibLWiLTXi5Ua-42" vertex="1">
           <mxGeometry y="30" width="200" height="30" as="geometry" />
@@ -204,7 +204,15 @@
           <mxGeometry y="60" width="200" height="30" as="geometry" />
         </mxCell>
         <mxCell id="zcg6ZxX6Wk7aITUErAla-42" value="&lt;font style=&quot;font-size: 36px;&quot;&gt;Domain service&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
-          <mxGeometry x="-560" y="80" width="460" height="30" as="geometry" />
+          <mxGeometry x="-590" y="80" width="460" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="zcg6ZxX6Wk7aITUErAla-43" value="CheckService" style="swimlane;" vertex="1" parent="1">
+          <mxGeometry y="160" width="350" height="70" as="geometry">
+            <mxRectangle x="-900" y="10" width="140" height="30" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="zcg6ZxX6Wk7aITUErAla-44" value="read() -&amp;gt; list[CheckModel]" style="rounded=0;whiteSpace=wrap;html=1;align=left;" vertex="1" parent="zcg6ZxX6Wk7aITUErAla-43">
+          <mxGeometry y="30" width="350" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
