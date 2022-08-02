@@ -1,5 +1,5 @@
 import './styles/App.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import React from "react";
 import OperationList from "./components/OperationList";
 import factories from "./factories"
@@ -7,12 +7,15 @@ import MyInput from "./components/UI/input/MyInput";
 import MyButton from "./components/UI/button/MyButton";
 
 function App() {
-    const service = factories.getOperationService();
-    const [operations, setOperations] = useState([
-       {id: 1, date: '01.01.2022', check: 'Прораб', type: 'Расход', category: 'Питание', desc: 'try', sum: 100},
-       {id: 2, date: '01.01.2022', check: 'Прораб', type: 'Расход', category: 'Питание', desc: 'try', sum: 100},
-       {id: 3, date: '01.01.2022', check: 'Прораб', type: 'Расход', category: 'Питание', desc: 'try', sum: 100},
-    ])
+    const [operations, setOperations] = useState([])
+    const [service, _] = useState(factories.getOperationService());
+
+    useEffect(() => {
+        service.getOperations()
+            .then((ops) => setOperations(ops))
+            .catch((err) => console.error(err));
+    }, [service]);
+
 
     const [check, setCheck] = useState('');
     const [type, setType] = useState('');
@@ -69,7 +72,6 @@ function App() {
                 <MyInput
                     value={sum}
                     onChange={e => setSum(e.target.value)}
-                    type="text"
                     placeholder="Сумма"
                 />
                 <MyButton onClick={addNewOperation}>Внести операцию</MyButton>
